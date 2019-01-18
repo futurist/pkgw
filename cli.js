@@ -35,6 +35,7 @@ $ ${appInfo.name} vb  # display version_build
 $ ${appInfo.name} version=2.1.1  # set version field to 2.1.1
 $ ${appInfo.name} v=2.1.1  # same as above
 $ ${appInfo.name} v+  # version patch
+$ ${appInfo.name} v-  # version patch -1
 $ ${appInfo.name} vv  # version patch
 $ ${appInfo.name} vp  # version patch
 $ ${appInfo.name} vi  # version minor
@@ -69,6 +70,7 @@ const SHORTCUTS = {
   v: 'version',
   b: 'build',
   'v+': 'version=patch',
+  'v-': 'version=minus',
   vv: 'version=patch',
   vp: 'version=patch',
   vi: 'version=minor',
@@ -104,7 +106,16 @@ input.forEach(str => {
     // update
     let newValue = value
     if(field=='version' && /^\w+$/.test(value)) {
-      newValue = semver.inc(oldValue, value)
+      const arr = oldValue.split('.')
+      if(value=='minus' && arr.length>2) {
+        arr[2] = parseInt(arr[2]) - 1
+        newValue = arr.join('.')
+        if(arr[2]<0) {
+          throw new Error('version cannot be minus, new value:'+newValue)
+        }
+      }else {
+        newValue = semver.inc(oldValue, value)
+      }
     } else if (field=='build' && Number.isInteger(+oldValue)) {
       oldValue = +oldValue
       switch(value) {
