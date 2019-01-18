@@ -12,7 +12,7 @@ const cli = require('meow')(`
 version: ${appInfo.version}
 
 Usage
-$ ${appInfo.name} [options] [field/value]
+$ ${appInfo.name} [options] [field=[value]]
 
 Options
 --version           Show version info
@@ -23,7 +23,7 @@ Options
 Field[=Value]
 Field can be any package.json field, with below shortcuts added:
 
-v|version[+-pmj]    Display/Update version field
+v|version[+vpmj]    Display/Update version field
 b|build[+-b]         Display/Update build field
 
 Examples
