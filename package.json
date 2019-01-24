@@ -6,7 +6,7 @@
   "main": "index.js",
   "bin": {
     "pkgw": "./cli.js",
-    "pp": "./cli.js"
+    "pg": "./cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
