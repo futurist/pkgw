@@ -1,6 +1,6 @@
 {
   "name": "pkgw",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "build": 0,
   "description": "package.json writer",
   "main": "index.js",
