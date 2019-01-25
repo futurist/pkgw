@@ -6,6 +6,7 @@
   "main": "index.js",
   "bin": {
     "pkgw": "./cli.js",
+    "pkg": "./cli.js",
     "pg": "./cli.js"
   },
   "scripts": {
