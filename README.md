@@ -33,6 +33,7 @@ Usage
   $ pkgw version  # display version field
   $ pkgw v   # same as above
   $ pkgw vb  # display version_build
+  $ pkgw bv  # display version_build
   $ pkgw version=2.1.1  # set version field to 2.1.1
   $ pkgw v=2.1.1  # same as above
   $ pkgw v+  # version patch

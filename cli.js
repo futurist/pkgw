@@ -31,7 +31,7 @@ $ ${appInfo.name} license  # display license field
 $ ${appInfo.name} license MIT  # set license field
 $ ${appInfo.name} version  # display version field
 $ ${appInfo.name} v   # same as above
-$ ${appInfo.name} vb  # display version_build
+$ ${appInfo.name} vb/bv  # display version_build
 $ ${appInfo.name} version=2.1.1  # set version field to 2.1.1
 $ ${appInfo.name} v=2.1.1  # same as above
 $ ${appInfo.name} v+  # version patch
@@ -85,7 +85,7 @@ const FIELD_MAP = {
 }
 
 input.forEach(str => {
-  if(str==='vb'){
+  if(str==='vb' || str==='bv'){
     const val = dotProp.get(pkg, 'version') + '_' + dotProp.get(pkg, 'build')
     console.log(val)
     return
