@@ -93,7 +93,6 @@ input.forEach(str => {
   let [field, value] = (
     flags.plain ? str : SHORTCUTS[str] || str
   ).split('=')
-
   if(!flags.plain){
     field = FIELD_MAP[field] || field
   }
@@ -116,7 +115,11 @@ input.forEach(str => {
       }else {
         newValue = semver.inc(oldValue, value)
       }
-    } else if (field=='build' && Number.isInteger(+oldValue)) {
+    } else if (field=='build') {
+      if(oldValue == null || !Number.isInteger(+oldValue)) {
+        console.log(chalk.red('"build" field is not a number'))
+        return
+      }
       oldValue = +oldValue
       switch(value) {
         case '+':
